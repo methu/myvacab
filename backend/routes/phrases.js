@@ -1,5 +1,6 @@
 const router = require('express').Router();
 let Phrase = require('../models/phrases.model');
+const { route } = require('./words');
 
 router.route('/').get((req, res) => {
   Phrase.find()
@@ -16,6 +17,12 @@ router.route('/add').post((req, res) => {
   newPhrase.save()
     .then(() => res.json('Phrase added!'))
     .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/:id').delete((req, res) => {
+  Phrase.findOneAndDelete(req.params.id)
+    .then(() => res.json('Phrase deleted.'))
+    .catch(err => res.status(400).json('Error: '));
 });
 
 module.exports = router;
