@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-export default class AddWord extends Component {
+export default class EditWord extends Component {
   constructor(props) {
     super(props);
 
@@ -15,7 +15,15 @@ export default class AddWord extends Component {
       title: "",
       wclass: "",
       quote: "",
+      edit_mode: false
     }
+  }
+
+  componentDidMount() {
+    // TODO:
+    // check if id exists in the parameters
+    // if so change edit_mode to true and edit existing word
+    // else create new word
   }
 
   onChangeTitle(e) {

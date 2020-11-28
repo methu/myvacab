@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import axios from 'axios';
 
-export default class AddPhrase extends Component {
+export default class EditPhrase extends Component {
   constructor(props) {
     super(props);
 
@@ -14,8 +14,16 @@ export default class AddPhrase extends Component {
       text: "",
       words: [],
       wildcard_pos: 0,
-      wildcard_class: ""
+      wildcard_class: "",
+      edit_mode: false
     }
+  }
+
+  componentDidMount() {
+    // TODO:
+    // check if id exists in the parameters
+    // if so change edit_mode to true and edit existing phrase
+    // else create new phrase
   }
 
   onChangeText(e) {
