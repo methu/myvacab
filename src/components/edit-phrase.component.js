@@ -72,7 +72,7 @@ export default class EditPhrase extends Component {
   render() {
     return(
       <div>
-        <h3>Edit Phrase</h3>
+        <h5>Edit Phrase</h5>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Phrase:</label>

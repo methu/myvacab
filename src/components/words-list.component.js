@@ -44,7 +44,7 @@ export default class WordsList extends Component {
   render() {
     return (
       <div>
-        <h3>Word List</h3>
+        <h5>Word List</h5>
         <table className="table">
           <thead className="thead-light">
             <tr>

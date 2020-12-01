@@ -44,7 +44,7 @@ export default class PhrasesList extends Component {
   render() {
     return (
       <div>
-        <h3>Phrase List</h3>
+        <h5>Phrase List</h5>
         <table className="table">
           <thead className="thead-light">
             <tr>

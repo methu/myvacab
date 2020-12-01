@@ -66,7 +66,7 @@ export default class EditWord extends Component {
   render() {
     return(
       <div>
-        <h3>Edit Word</h3>
+        <h5>Edit Word</h5>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Title:</label>

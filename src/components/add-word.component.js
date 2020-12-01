@@ -57,7 +57,7 @@ export default class AddWord extends Component {
   render() {
     return(
       <div>
-        <h3>Add New Word</h3>
+        <h5>Add New Word</h5>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Title:</label>

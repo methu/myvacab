@@ -42,7 +42,7 @@ export default class RandomPhrase extends Component {
   render() {
     return (
       <div>
-        <h3>Random Phrase</h3>
+        <h5>Random Phrase</h5>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <blockquote>{this.state.text}</blockquote>
