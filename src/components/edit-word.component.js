@@ -1,7 +1,8 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-export default class AddWord extends Component {
+export default class EditWord extends Component {
   constructor(props) {
     super(props);
 
@@ -17,10 +18,22 @@ export default class AddWord extends Component {
     }
   }
 
+  componentDidMount() {
+    axios.get('http://localhost:5000/words/'+this.props.match.params.id)
+      .then(res => {
+        this.setState({
+          title: res.data.title,
+          wclass: res.data.wclass,
+          quote: res.data.quote,
+        });
+      })
+      .catch(err => console.log('Error: ' + err));
+  }
+
   onChangeTitle(e) {
     this.setState({
       title: e.target.value
-    })
+    });
   }
 
   onChangeWClass(e) {
@@ -44,20 +57,16 @@ export default class AddWord extends Component {
       quote: this.state.quote,
     }
 
-    axios.post('http://localhost:5000/words/add', word)
+    axios.put('http://localhost:5000/words/'+this.props.match.params.id, word)
       .then(res => console.log(res.data));
 
-    this.setState({
-      title: "",
-      wclass: "",
-      quote: "",
-    })
+    window.location = '/';
   }
 
   render() {
     return(
       <div>
-        <h3>Add New Word</h3>
+        <h3>Edit Word</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Title:</label>
@@ -88,7 +97,8 @@ export default class AddWord extends Component {
           </div>
 
           <div className="form-group">
-            <input type="submit" value="Add" className="btn btn-primary" />
+            <input type="submit" value="Save" className="btn btn-primary" />
+            <Link className="btn" to="/words/">Cancel</Link>
           </div>
         </form>
       </div>

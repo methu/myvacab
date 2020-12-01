@@ -8,7 +8,7 @@ const Word = props => (
     <td>{props.word.wclass}</td>
     <td>{props.word.quote}</td>
     <td>
-      <a href="#" onClick={() => {props.deleteWord(props.word._id)}}>delete</a>
+      <Link to={"/words/edit/"+props.word._id}>edit</Link> | <a href="#" onClick={() => {props.deleteWord(props.word._id)}}>delete</a>
     </td>
   </tr>
 )
@@ -58,7 +58,7 @@ export default class WordsList extends Component {
             { this.listWords() }
           </tbody>
         </table>
-        <Link className="btn btn-primary" to="/Words/add">Add Word</Link>
+        <Link className="btn btn-primary" to="/words/add">Add Word</Link>
       </div>
     )
   }

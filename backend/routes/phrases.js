@@ -1,6 +1,5 @@
 const router = require('express').Router();
 let Phrase = require('../models/phrases.model');
-const { route } = require('./words');
 
 router.route('/').get((req, res) => {
   Phrase.find()
@@ -18,6 +17,25 @@ router.route('/add').post((req, res) => {
     .then(() => res.json('Phrase added!'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
+
+router.route('/:id').get((req, res) => {
+  Phrase.findById(req.params.id)
+    .then(phrase => res.json(phrase))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/:id').put((req, res) => {
+  Phrase.findById(req.params.id)
+    .then(phrase => {
+      phrase.words = req.body.words;
+      phrase.wildcard_pos = req.body.wildcard_pos;
+      phrase.wildcard_class = req.body.wildcard_class;
+
+      phrase.save()
+        .then(() => res.json('Phrase updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+})
 
 router.route('/:id').delete((req, res) => {
   Phrase.findOneAndDelete(req.params.id)

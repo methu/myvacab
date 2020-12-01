@@ -18,6 +18,25 @@ router.route('/add').post((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 })
 
+router.route('/:id').get((req, res) => {
+  Word.findById(req.params.id)
+    .then(word => res.json(word))
+    .catch(err => res.status(400).json('Error: ' + err));
+})
+
+router.route('/:id').put((req, res) => {
+  Word.findById(req.params.id)
+    .then(word => {
+      word.title = req.body.title;
+      word.wclass = req.body.wclass;
+      word.quote = req.body.quote;
+
+      word.save()
+        .then(() => res.json('Word updated'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+})
+
 router.route('/:id').delete((req, res) => {
   Word.findByIdAndDelete(req.params.id)
     .then(() => res.json('Word deleted.'))
