@@ -66,7 +66,7 @@ export default class EditPhrase extends Component {
     axios.put('http://localhost:5000/phrases/'+this.props.match.params.id, phrase)
       .then(res => console.log(res.data));
 
-    window.location = '/';
+    window.location = '/phrases/';
   }
 
   render() {

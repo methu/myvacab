@@ -60,7 +60,7 @@ export default class EditWord extends Component {
     axios.put('http://localhost:5000/words/'+this.props.match.params.id, word)
       .then(res => console.log(res.data));
 
-    window.location = '/';
+    window.location = '/words/';
   }
 
   render() {
