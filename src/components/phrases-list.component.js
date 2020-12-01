@@ -8,7 +8,7 @@ const Phrase = props => (
     <td>{props.phrase.words[props.phrase.wildcard_pos].toLowerCase()}</td>
     <td>{props.phrase.wildcard_class}</td>
     <td>
-    <Link to={"/phrase/"+props.phrase._id}>edit</Link> | <a href="#" onClick={() => {props.deletePhrase(props.phrase._id)}}>delete</a>
+      <a href="#" onClick={() => {props.deletePhrase(props.phrase._id)}}>delete</a>
     </td>
   </tr>
 )
