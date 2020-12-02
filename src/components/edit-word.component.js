@@ -19,7 +19,7 @@ export default class EditWord extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/words/'+this.props.match.params.id)
+    axios.get('http://192.168.10.102:5000/words/'+this.props.match.params.id)
       .then(res => {
         this.setState({
           title: res.data.title,
@@ -57,7 +57,7 @@ export default class EditWord extends Component {
       quote: this.state.quote,
     }
 
-    axios.put('http://localhost:5000/words/'+this.props.match.params.id, word)
+    axios.put('http://192.168.10.102:5000/words/'+this.props.match.params.id, word)
       .then(res => console.log(res.data));
 
     window.location = '/words/';

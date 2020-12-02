@@ -49,7 +49,7 @@ export default class AddPhrase extends Component {
       wildcard_class: this.state.wildcard_class
     }
 
-    axios.post('http://localhost:5000/phrases/add', phrase)
+    axios.post('http://192.168.10.102:5000/phrases/add', phrase)
       .then(res => console.log(res.data));
 
     this.setState({
