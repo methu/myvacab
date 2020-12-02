@@ -8,7 +8,7 @@ const Word = props => (
     <td>{props.word.wclass}</td>
     <td>{props.word.quote}</td>
     <td>
-      <Link to={"/words/edit/"+props.word._id}>edit</Link>
+      <Link to={"/words/edit/"+props.word._id}>edit</Link> | <a href="#" onClick={() => {props.deleteWord(props.word._id)}}>delete</a>
     </td>
   </tr>
 )
