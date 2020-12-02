@@ -5,20 +5,17 @@ import axios from 'axios';
 const Phrase = props => (
   <a href={"/phrases/edit/"+props.phrase._id}
     className="list-group-item list-group-item-action flex-column align-items-start">
-      <div className="d-flex justify-content-between">
-        <p className="mb-1">
-        {
-          props.phrase.words.map((word, index) =>{
-            if (index !== props.phrase.wildcard_pos) {
-              return <span>{word} </span>
-            } else {
-              return <span className="text-info">{word} </span>
-            }
-          })
-        }
-        </p>
-        <small>{props.phrase.wildcard_class}</small>
-      </div>
+      <p className="mb-1">
+      {
+        props.phrase.words.map((word, index) =>{
+          if (index !== props.phrase.wildcard_pos) {
+            return <span>{word} </span>
+          } else {
+            return <span className="text-info">{word} </span>
+          }
+        })
+      }
+      </p>
   </a>
 )
 
