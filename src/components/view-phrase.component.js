@@ -44,7 +44,8 @@ export default class ViewPhrase extends Component {
             <p>{this.state.wildcard_class}</p>
           </div>
           <div>
-            <Link to="/phrases/">Go Back</Link>
+          <Link className="btn btn-primary" to={'/phrases/edit/'+this.props.match.params.id}>Edit</Link>
+          <Link className="btn" to="/phrases/">Go Back</Link>
           </div>
       </div>
     )

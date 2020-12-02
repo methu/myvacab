@@ -3,14 +3,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Phrase = props => (
-  <tr>
-    <td>{props.phrase.words.join(' ')}</td>
-    <td>{props.phrase.words[props.phrase.wildcard_pos].toLowerCase()}</td>
-    <td>{props.phrase.wildcard_class}</td>
-    <td>
-      <Link to={'/phrases/view/'+props.phrase._id}>view</Link> | <Link to={'/phrases/edit/'+props.phrase._id}>edit</Link>
-    </td>
-  </tr>
+  <a href={"/phrases/view/"+props.phrase._id}
+    className="list-group-item list-group-item-action flex-column align-items-start">
+      {props.phrase.words.join(' ')}
+  </a>
 )
 
 export default class PhrasesList extends Component {
@@ -45,20 +41,10 @@ export default class PhrasesList extends Component {
     return (
       <div>
         <h5>Phrase List</h5>
-        <table className="table">
-          <thead className="thead-light">
-            <tr>
-              <th>Phrase</th>
-              <th>Wildcard</th>
-              <th>Wildcard Class</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            { this.listPhrases() }
-          </tbody>
-        </table>
         <Link className="btn btn-primary" to="/phrases/add">Add Phrase</Link>
+        <div className="list-group">
+            { this.listPhrases() }
+        </div>
       </div>
     )
   }
