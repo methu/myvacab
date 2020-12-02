@@ -42,7 +42,8 @@ export default class ViewWord extends Component {
             <p>{this.state.quote}</p>
           </div>
           <div>
-            <Link to="/words/">Go Back</Link>
+            <Link className="btn btn-primary" to={"/words/edit/"+this.props.match.params.id}>Edit</Link>
+            <Link className="btn" to="/words/">Go Back</Link>
           </div>
       </div>
     )

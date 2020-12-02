@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Word = props => (
-  <tr>
-    <td>{props.word.title}</td>
-    <td>{props.word.wclass}</td>
-    <td>{props.word.quote}</td>
-    <td>
-      <Link to={'/words/view/'+props.word._id}>view</Link> | <Link to={'/words/edit/'+props.word._id}>edit</Link>
-    </td>
-  </tr>
+  <a href={"/words/edit/"+props.word._id}
+    className="list-group-item list-group-item-action flex-column align-items-start">
+    <div className="d-flex justify-content-between">
+      <h5 className="mb-1">{props.word.title}</h5>
+      <small>{props.word.wclass}</small>
+    </div>
+    <p className="mb-1">{props.word.quote}</p>
+  </a>
 )
 
 export default class WordsList extends Component {
@@ -45,20 +45,10 @@ export default class WordsList extends Component {
     return (
       <div>
         <h5>Word List</h5>
-        <table className="table">
-          <thead className="thead-light">
-            <tr>
-              <th>Title</th>
-              <th>Class</th>
-              <th>Quote</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            { this.listWords() }
-          </tbody>
-        </table>
         <Link className="btn btn-primary" to="/words/add">Add Word</Link>
+        <div className="list-group">
+            { this.listWords() }
+        </div>
       </div>
     )
   }
