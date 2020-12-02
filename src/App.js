@@ -5,8 +5,10 @@ import Navbar from "react-bootstrap/Navbar"
 
 import RandomPhrase from "./components/random-phrase.component";
 import PhrasesList from "./components/phrases-list.component";
+import ViewPhrase from "./components/view-phrase.component";
 import NewPhrase from "./components/add-phrase.component";
 import EditPhrase from "./components/edit-phrase.component";
+import ViewWord from "./components/view-word.component";
 import WordsList from "./components/words-list.component";
 import NewWord from "./components/add-word.component";
 import EditWord from "./components/edit-word.component";
@@ -29,9 +31,11 @@ function App() {
         <Route path="/" exact component={RandomPhrase} />
         <Route path="/phrases" exact component={PhrasesList} />
         <Route path="/phrases/add" excat component={NewPhrase} />
+        <Route path="/phrases/view/:id" exact component={ViewPhrase} />
         <Route path="/phrases/edit/:id" exact component={EditPhrase} />
         <Route path="/words" exact component={WordsList} />
         <Route path="/words/add" exact component={NewWord} />
+        <Route path="/words/view/:id" exact component={ViewWord} />
         <Route path="/words/edit/:id" exact component={EditWord} />
       </div>
     </Router>

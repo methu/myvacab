@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default class RandomPhrase extends Component {
@@ -10,7 +11,8 @@ export default class RandomPhrase extends Component {
     this.state = {
       phrases: [],
       words: [],
-      text: ""
+      phrase: {words:[]},
+      word: {title: ""},
     }
   }
 
@@ -29,14 +31,15 @@ export default class RandomPhrase extends Component {
     if (this.state.phrases.length === 0 || this.state.words.length === 0) {
       return
     }
-    const phrase = this.state.phrases.sort(() => Math.random() - 0.5)[0];
-    const word = this.state.words
-      .filter(el => el.wclass === phrase.wildcard_class)
+    const random_phrase = this.state.phrases.sort(() => Math.random() - 0.5)[0];
+    const random_word = this.state.words
+      .filter(el => el.wclass === random_phrase.wildcard_class)
       .sort(() => Math.random() - 0.5)[0];
-    phrase.words[phrase.wildcard_pos] = word.title;
+
     this.setState({
-      text: phrase.words.join(' ')
-    })
+      phrase: random_phrase,
+      word: random_word
+    });
   }
 
   render() {
@@ -45,7 +48,17 @@ export default class RandomPhrase extends Component {
         <h5>Random Phrase</h5>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <blockquote>{this.state.text}</blockquote>
+            <blockquote>
+            {
+              this.state.phrase.words.map((word, index) => {
+                if (index !== this.state.phrase.wildcard_pos) {
+                  return <span>{word} </span>
+                } else {
+                  return <span><Link to={"/words/view/"+this.state.word._id}>{this.state.word.title}</Link> </span>
+                }
+              })
+            }
+            </blockquote>
           </div>
 
           <div className="form-group">
