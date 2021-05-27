@@ -20,7 +20,7 @@ export default class EditPhrase extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://192.168.10.102:5000/phrases/'+this.props.match.params.id)
+    axios.get('http://localhost:5000/phrases/'+this.props.match.params.id)
       .then(res => {
         this.setState({
           text: res.data.words.join(' '),
@@ -63,7 +63,7 @@ export default class EditPhrase extends Component {
       wildcard_class: this.state.wildcard_class
     }
 
-    axios.put('http://192.168.10.102:5000/phrases/'+this.props.match.params.id, phrase)
+    axios.put('http://localhost:5000/phrases/'+this.props.match.params.id, phrase)
       .then(res => console.log(res.data));
 
     window.location = '/phrases/';

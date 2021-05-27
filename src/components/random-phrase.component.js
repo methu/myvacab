@@ -17,11 +17,11 @@ export default class RandomPhrase extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://192.168.10.102:5000/phrases/')
+    axios.get('http://localhost:5000/phrases/')
       .then(res => { this.setState({ phrases: res.data })})
       .catch(err => { console.log('Error: ' + err)});
 
-    axios.get('http://192.168.10.102:5000/words/')
+    axios.get('http://localhost:5000/words/')
       .then(res => { this.setState({ words: res.data })})
       .catch(err => { console.log('Error: ' + err)})
   }

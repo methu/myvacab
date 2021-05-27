@@ -44,7 +44,7 @@ export default class AddWord extends Component {
       quote: this.state.quote,
     }
 
-    axios.post('http://192.168.10.102:5000/words/add', word)
+    axios.post('http://localhost:5000/words/add', word)
       .then(res => console.log(res.data));
 
     this.setState({

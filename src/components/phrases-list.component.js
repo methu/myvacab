@@ -27,13 +27,13 @@ export default class PhrasesList extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://192.168.10.102:5000/phrases/')
+    axios.get('http://localhost:5000/phrases/')
       .then(res => { this.setState({ phrases: res.data })})
       .catch(err => { console.log('Error: ' + err)})
   }
 
   deletePhrase(id) {
-    axios.delete('http://192.168.10.102:5000/phrases/' + id)
+    axios.delete('http://localhost:5000/phrases/' + id)
       .then(res => console.log(res.data));
     
     this.setState({

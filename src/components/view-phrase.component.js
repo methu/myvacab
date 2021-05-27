@@ -15,7 +15,7 @@ export default class ViewPhrase extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://192.168.10.102:5000/phrases/'+this.props.match.params.id)
+    axios.get('http://localhost:5000/phrases/'+this.props.match.params.id)
       .then(res => {
         this.setState({
           text: res.data.words.join(' '),

@@ -21,13 +21,13 @@ export default class WordsList extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://192.168.10.102:5000/words/')
+    axios.get('http://localhost:5000/words/')
       .then(res => { this.setState({ words: res.data })})
       .catch(err => { console.log('Error: ' + err)})
   }
 
   deleteWord(id) {
-    axios.delete('http://192.168.10.102:5000/words/' + id)
+    axios.delete('http://localhost:5000/words/' + id)
       .then(res => console.log(res.data));
     
     this.setState({
