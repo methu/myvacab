@@ -20,9 +20,17 @@ export default class AddPhrase extends Component {
 
   onChangeText(e) {
     const textValue = e.target.value;
+
+    // remove punctuations
+    const regex = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]+$/;
+    let words = textValue.split(' ');
+    words.forEach(function(word, index) {
+      words[index] = word.replace(regex, '');
+    });
+
     this.setState({
       text: textValue,
-      words: textValue.split(' '),
+      words: words,
       wildcard_pos: 0,
       wildcard_class: ''
     })

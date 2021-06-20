@@ -22,9 +22,18 @@ export default class EditPhrase extends Component {
   componentDidMount() {
     axios.get('http://localhost:5000/phrases/'+this.props.match.params.id)
       .then(res => {
+        let words = res.data.words;
+        const text = words.join(' ');
+
+        // remove punctuations
+        const regex = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]+$/;
+        words.forEach(function(word, index) {
+          words[index] = word.replace(regex, '');
+        });
+
         this.setState({
-          text: res.data.words.join(' '),
-          words: res.data.words,
+          text: text,
+          words: words,
           wildcard_pos: res.data.wildcard_pos,
           wildcard_class: res.data.wildcard_class
         })
@@ -34,6 +43,14 @@ export default class EditPhrase extends Component {
 
   onChangeText(e) {
     const textValue = e.target.value;
+
+    // remove punctuations
+    const regex = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]+$/;
+    let words = textValue.split(' ');
+    words.forEach(function(word, index) {
+      words[index] = word.replace(regex, '');
+    });
+
     this.setState({
       text: textValue,
       words: textValue.split(' '),
