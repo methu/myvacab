@@ -38,7 +38,7 @@ router.route('/:id').put((req, res) => {
 })
 
 router.route('/:id').delete((req, res) => {
-  Word.findByIdAndDelete(req.params.id)
+  Word.findByIdAndDelete({_id:req.params.id})
     .then(() => res.json('Word deleted.'))
     .catch(err => res.status(400).json('Error: ' + err));
 })

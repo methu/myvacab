@@ -38,7 +38,7 @@ router.route('/:id').put((req, res) => {
 })
 
 router.route('/:id').delete((req, res) => {
-  Phrase.findOneAndDelete(req.params.id)
+  Phrase.findOneAndDelete({_id:req.params.id})
     .then(() => res.json('Phrase deleted.'))
     .catch(err => res.status(400).json('Error: '));
 });
